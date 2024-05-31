@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "semantic-cache"
+version = "0.1.0"
+description = "Semantic Caching Using Duckdb to cache embeddings"
+authors = ["Ezzaldin97 <kingtal632@yahoo.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "semantic_cache"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+duckdb = "^0.10.3"
+python-dotenv = "^1.0.1"
+numpy = "^1.26.0"
+pandas = "^2.1.0"
+ollama = "^0.2.0"
+fastapi = "^0.110.0"
+uvicorn = "^0.29.0"
+
+
+[tool.poetry.group.linting.dependencies]
+black = "^24.4.2"
+ruff = "^0.4.5"
+isort = "^5.13.2"
+
+[tool.black]
+line-length = 88
+target_version = ['py310', 'py311', 'py312']
+preview = true
+
+[tool.ruff]
+line-length = 88
+src = ["src", "main.py"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "E402"]
+"main.py" = ["E402"]
+"semantic_cache/tests/*.py" = ["E402", "E712"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
