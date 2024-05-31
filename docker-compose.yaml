@@ -1,0 +1,31 @@
+services:
+  ollama:
+    container_name: ollama
+    image: ollama/ollama:latest
+    volumes:
+      - ./ollama:/root/.ollama
+    ports:
+      - "11434:11434"
+    pull_policy: always
+    tty: true
+    restart: always
+    networks:
+      - app-network
+    
+  semantic-caching:
+    depends_on:
+      - ollama
+    container_name: semantic-caching
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    networks:
+      - app-network
+  
+networks:
+  app-network:
+    driver: bridge

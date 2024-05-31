@@ -1,0 +1,16 @@
+### environment
+.venv/
+.env
+**/__pycache__
+.ruff_cache/
+
+## assets directories
+assets/db/
+assets/imgs/
+
+## additionals
+tests/
+.gitignore
+
+## ollama
+ollama/
