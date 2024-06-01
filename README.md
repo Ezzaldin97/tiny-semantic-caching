@@ -56,3 +56,28 @@ after running the docker-compose go to ollama container CLI and pull an embeddin
 ```bash
 ollama pull nomic-embed-text
 ```
+
+## How it Works?
+
+There are 4 different Functionalities:
+
+1. vectorize (GET):
+convert Passed Text to Vector Using the Embedding Model
+
+![](assets/imgs/1.PNG)
+
+![](assets/imgs/2.PNG)
+
+2. insertion (POST):
+insert data and its embeddings to caching database.
+
+3. search (POST):
+search for similar/identical text based on passed text.
+here text is vectorized then search in caching database, last thing it to insert it.
+
+![](assets/imgs/3.PNG)
+
+![](assets/imgs/4.PNG)
+
+4. refresh (DELETE):
+refreshing database to clear all records from it.
