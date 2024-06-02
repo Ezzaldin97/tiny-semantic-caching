@@ -49,12 +49,14 @@ async def search(text: str):
     results_df = vs.search(embeddings_result["data"]["response"])
     result = results_df[results_df["distance_score"] >= float(os.getenv("threshold"))]
     if not len(result) > 0:
+        score = None
         result = None
     else:
+        score = result["distance_score"].tolist()[0]
         result = result["text"].tolist()[0]
     ### must be saved directly
     await insert_embedding(text, embeddings_result["data"]["response"])
-    return {"message": "data saved in vector database", "data": {"response": result}}
+    return {"message": "data saved in vector database", "data": {"response": result, "score": score}}
 
 
 @router.delete("/refresh/")
