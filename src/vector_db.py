@@ -96,11 +96,11 @@ class VectorStore:
         query = f"""
         SELECT 
             text,
-            array_cosine_similarity(
+            array_distance(
                 embedding, ARRAY[{embedding_str}]::FLOAT[{self.embedding_size}]
             ) AS distance_score
         FROM embeddings
-        ORDER BY array_cosine_similarity(
+        ORDER BY array_distance(
             embedding, ARRAY[{embedding_str}]::FLOAT[{self.embedding_size}]
         )
         LIMIT {top_k}; 

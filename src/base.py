@@ -47,7 +47,7 @@ async def search(text: str):
     embeddings_result = await vectorize(text)
     ## search first
     results_df = vs.search(embeddings_result["data"]["response"])
-    result = results_df[results_df["distance_score"] >= float(os.getenv("threshold"))]
+    result = results_df[results_df["distance_score"] <= float(os.getenv("threshold"))]
     if not len(result) > 0:
         score = None
         result = None
