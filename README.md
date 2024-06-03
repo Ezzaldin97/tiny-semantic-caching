@@ -81,3 +81,14 @@ here text is vectorized then search in caching database, last thing it to insert
 
 4. refresh (DELETE):
 refreshing database to clear all records from it.
+
+## Usage:
+
+- feel free to update the scripts based on your needs and run the docker compose file.
+- use the direct image without any update by
+```bash
+## go to scripts directory
+cd scripts
+## run the docker compose file
+docker-compose up -d
+```
