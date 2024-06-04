@@ -56,7 +56,10 @@ async def search(text: str):
         result = result["text"].tolist()[0]
     ### must be saved directly
     await insert_embedding(text, embeddings_result["data"]["response"])
-    return {"message": "data saved in vector database", "data": {"response": result, "score": score}}
+    return {
+        "message": "data saved in vector database",
+        "data": {"response": result, "score": score},
+    }
 
 
 @router.delete("/refresh/")
