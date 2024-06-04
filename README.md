@@ -52,10 +52,6 @@ docker-compose build
 ## run the docker-compose file
 docker-compose up -d
 ```
-after running the docker-compose go to ollama container CLI and pull an embedding model
-```bash
-ollama pull nomic-embed-text
-```
 
 ## How it Works?
 
